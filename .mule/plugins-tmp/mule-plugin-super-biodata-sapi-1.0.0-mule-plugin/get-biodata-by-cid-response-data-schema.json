@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/bio-data",
+  "definitions": {
+    "bio-data": {
+      "type": "object",
+      "example": {
+        "_id": {
+          "$oid": "61f4e481ab7feb3fbd1d25a4"
+        },
+        "id": "DC0002",
+        "name": "Wonder Woman",
+        "fullname": "Diana Prince",
+        "birthplace": "Themyscira",
+        "base": "-",
+        "publisher": "DC Comics",
+        "occupation": "Protector of Paradise Island; former Goddess of Truth"
+      },
+      "additionalProperties": true,
+      "required": [
+        "_id",
+        "id",
+        "name",
+        "fullname",
+        "birthplace",
+        "base",
+        "publisher",
+        "occupation"
+      ],
+      "properties": {
+        "_id": {
+          "description": "A default field for BSON ObjectId's and it is, by default, indexed. _id and id  are not the same",
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "$oid"
+          ],
+          "properties": {
+            "$oid": {
+              "type": "string"
+            }
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "fullname": {
+          "type": "string"
+        },
+        "birthplace": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "occupation": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

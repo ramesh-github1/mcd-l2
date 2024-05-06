@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;super-tickets-papi/src/main/mule/super-ticket-papi.xml&apos; to &apos;api.xml&apos;" description="Rename resource &apos;super-ticket-papi.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/mule/super-ticket-papi.xml" name="api.xml" stamp="1712058309018" updateReferences="true"/>
+</session>

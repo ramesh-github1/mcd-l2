@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/movies-data",
+  "definitions": {
+    "movies-data": {
+      "type": "object",
+      "example": {
+        "character": "BatMan",
+        "id": "DC0001",
+        "movies": [
+          {
+            "name": "Zack Snyder's Justice League",
+            "year": 2021
+          },
+          {
+            "name": "Batman v Superman: Dawn of Justice",
+            "year": 2016
+          }
+        ]
+      },
+      "additionalProperties": true,
+      "required": [
+        "character",
+        "id",
+        "movies"
+      ],
+      "properties": {
+        "character": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "movies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "name",
+              "year"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "year": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

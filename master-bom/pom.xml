@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>4da5c678-c1d1-4ac1-bc1b-890ee58a16f6</groupId>
+	<artifactId>master-bom</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>master-bom</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<app.runtime>4.4.0-20240219</app.runtime>
+
+		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
+
+        <maven.resources.version>3.2.0</maven.resources.version>
+        <maven.clean.plugin.version>3.2.0</maven.clean.plugin.version>
+
+        <http.connector.version>1.9.1</http.connector.version>
+        <mule.socket.version>1.2.4</mule.socket.version>
+        <apikit.version>1.10.3</apikit.version>
+        <secure.config.version>1.2.7</secure.config.version>
+        
+		<super.movies.sapi.version>1.0.0</super.movies.sapi.version>
+		<super.biodata.sapi.version>1.0.0</super.biodata.sapi.version>
+
+		<objectstore.connector.version>1.2.2</objectstore.connector.version>
+		<oauth.module.version>1.1.21</oauth.module.version>
+	</properties>
+
+	<build>
+    <pluginManagement>
+        		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${maven.clean.plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+    </pluginManagement>
+	</build>
+
+    <dependencyManagement>
+        	<dependencies>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-http-connector</artifactId>
+			<version>${http.connector.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-sockets-connector</artifactId>
+			<version>${mule.socket.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-apikit-module</artifactId>
+			<version>${apikit.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.modules</groupId>
+			<artifactId>mule-secure-configuration-property-module</artifactId>
+			<version>${secure.config.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>4da5c678-c1d1-4ac1-bc1b-890ee58a16f6</groupId>
+			<artifactId>mule-plugin-super-biodata-sapi</artifactId>
+			<version>${super.biodata.sapi.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>4da5c678-c1d1-4ac1-bc1b-890ee58a16f6</groupId>
+			<artifactId>mule-plugin-super-movies-sapi</artifactId>
+			<version>${super.movies.sapi.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-oauth-module</artifactId>
+			<version>${oauth.module.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-objectstore-connector</artifactId>
+			<version>${objectstore.connector.version}</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+	</dependencies>
+    </dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>super-organization-app</id>
+			<name>Anypoint Exchange</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>mulesoft-releases</id>
+			<name>MuleSoft Releases Repository</name>
+			<url>https://repository.mulesoft.org/releases/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>mulesoft-releases</id>
+			<name>MuleSoft Releases Repository</name>
+			<layout>default</layout>
+			<url>https://repository.mulesoft.org/releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>

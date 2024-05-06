@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule
+	xmlns:super-heros-bio-data-sapi="http://www.mulesoft.org/schema/mule/super-heros-bio-data-sapi"
+	xmlns:super-heros-movies-data-sapi="http://www.mulesoft.org/schema/mule/super-heros-movies-data-sapi"
+	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns:tls="http://www.mulesoft.org/schema/mule/tls"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
+http://www.mulesoft.org/schema/mule/super-heros-movies-data-sapi http://www.mulesoft.org/schema/mule/super-heros-movies-data-sapi/current/mule-super-heros-movies-data-sapi.xsd
+http://www.mulesoft.org/schema/mule/super-heros-bio-data-sapi http://www.mulesoft.org/schema/mule/super-heros-bio-data-sapi/current/mule-super-heros-bio-data-sapi.xsd">
+	<http:listener-config name="apiHttpListenerConfig">
+		<http:listener-connection
+			host="0.0.0.0"
+			port="${api.port}"
+			protocol="HTTPS"
+			tlsContext="apiTlsContext" />
+	</http:listener-config>
+	<apikit:config
+		name="apiConfig"
+		api="${api.specifiaction}"
+		outboundHeadersMapName="outboundHeaders"
+		httpStatusVarName="httpStatus" />
+	<api-gateway:autodiscovery
+		apiId="19409007"
+		ignoreBasePath="true"
+		doc:name="API Autodiscovery"
+		doc:id="b4d8e49f-08dd-418e-98bc-d394541b89c4"
+		flowRef="api-main" />
+	<tls:context
+		name="apiTlsContext"
+		doc:name="TLS Context"
+		doc:id="1131d2fd-4949-4079-aa7d-190f40f3e54a">
+		<tls:trust-store type="pkcs12" />
+		<tls:key-store
+			type="${tls.keystore.type}"
+			path="${tls.keystore.path}"
+			alias="${tls.keystore.alias}"
+			keyPassword="${secure::tls.keystore.keyPassword}"
+			password="${secure::tls.keystore.password}" />
+	</tls:context>
+	<configuration-properties
+		doc:name="Configuration properties"
+		doc:id="1906e449-77f0-470c-9bba-c3dd3bb1496f"
+		file="${env}-properties.yaml" />
+	<secure-properties:config
+		name="securePropertiesConfig"
+		doc:name="Secure Properties Config"
+		doc:id="ecff8bd2-b2cb-4484-a110-5b4a7d3d884d"
+		file="secure-${env}-properties.yaml"
+		key="${secure.key}" >
+		<secure-properties:encrypt algorithm="Blowfish" />
+	</secure-properties:config>
+	<configuration-properties
+		doc:name="Configuration properties"
+		doc:id="cbe5aa31-d710-44e2-a861-3d57d0de7e2d"
+		file="properties.yaml" />
+	<super-heros-movies-data-sapi:config name="superHerosMoviesDataSAPIConfig" doc:name="Super Heros Movies Data SAPI Config" doc:id="65222a7c-2ae1-453b-9b73-75c810f17ad3" property_host="super-movies-sapi-rameshv.us-e2.cloudhub.io" property_port="80" property_basePath="/api/v1/" property_protocol="HTTP" property_responseTimeout="10000" property_username="5a4598b682064723ac87e6f8b705e051" property_password="B064Ff6FAc304FA4910af596d4ef0089" />
+	<super-heros-bio-data-sapi:config name="superHerosBioDataSAPIConfig" doc:name="Super Heros Bio Data SAPI Config" doc:id="427687ad-7721-4ca9-aaf4-ed18d9f37e0c" property_host="super-biodata-sapi-rameshv.us-e2.cloudhub.io" property_port="80" property_basePath="/api/v1/" property_protocol="HTTP" property_responseTimeout="10000" property_username="5a4598b682064723ac87e6f8b705e051" property_password="B064Ff6FAc304FA4910af596d4ef0089" />
+
+
+</mule>
