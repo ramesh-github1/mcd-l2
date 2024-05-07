@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.mule.tooling.runtime.muleServerLaunchType">
     <stringAttribute key="launch_mule_server_version" value="org.mule.tooling.server.4.4.0.ee"/>
-    <stringAttribute key="mule-agent-port" value="59205"/>
-    <stringAttribute key="mule-agent-token-auth" value="93224253-9f28-49eb-aaee-fa98d2af1dcf"/>
+    <stringAttribute key="mule-agent-port" value="55368"/>
+    <stringAttribute key="mule-agent-token-auth" value="f71667f6-ed29-440e-9b4f-75a86f1d3d62"/>
     <listAttribute key="mule-project-names">
         <listEntry value="super-movies-sapi"/>
     </listAttribute>
