@@ -1,1 +1,23 @@
-/.metadata/
+# Mule project specific
+/target/
+bin/
+.gradle/
+.settings/
+.project
+.classpath
+.externalToolBuilders/
+
+# Logs
+/log/
+
+# IDE specific
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Maven specific
+.mvn/
+mvnw
+mvnw.cmd
+
